@@ -1,0 +1,110 @@
+@keyframes homeHeading {
+  0% {
+    color: #fff;
+  }
+  50% {
+    color: transparent;
+  }
+  100% {
+    color: #fff;
+  }
+}
+
+@keyframes homeScroll {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+.home {
+  overflow-x: hidden;
+}
+
+.homeHeader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &--container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.82);
+      }
+    }
+  }
+
+  &__content {
+    text-align: center;
+    &--heading {
+      -webkit-text-stroke: 2px #fff;
+      font-size: 10rem;
+      font-weight: 600;
+      letter-spacing: 15px;
+      text-transform: uppercase;
+      cursor: default;
+      animation: homeHeading 4s ease-out infinite;
+    }
+
+    &--button {
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 1.5rem 4rem;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 999px;
+      transition: background-color 0.8s, color 0.8s;
+
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+
+    &--scroll {
+      color: #fff;
+      position: absolute;
+      left: 50;
+      bottom: 10px;
+      transform: translate(-50%, 0);
+      animation: homeScroll 3s infinite;
+      svg {
+        vertical-align: middle;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
