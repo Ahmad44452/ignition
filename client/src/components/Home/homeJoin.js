@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeJoin = () => {
   return (
     <div className="homeJoin">
-      <button className="homeJoin__button">Join Us</button>
-    </div>
+      <Link to={"/login"}>
+        <button className="homeJoin__button">Join Us</button>
+      </Link>
+    </div >
   )
 }
 

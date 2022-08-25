@@ -232,6 +232,7 @@
       padding: 1.5rem 2rem;
       background-color: rgba(#1e1e1e, 1);
       color: #d3d3d3;
+      border-radius: 5px;
 
       &::placeholder {
         color: #d3d3d3;
@@ -269,6 +270,7 @@
       color: #d3d3d3;
       border: 1px solid #1e1e1e;
       text-transform: uppercase;
+      border-radius: 5px;
     }
   }
 }
