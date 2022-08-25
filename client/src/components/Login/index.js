@@ -21,7 +21,6 @@ const Login = () => {
             <input className="login__input" type="text" name="username" placeholder="User name" />
             <input className="login__input" type="email" name="email" placeholder="Email" />
             <input className="login__input" type="password" name="password" placeholder="Password" />
-            <input className="login__input" type="text" name="address" placeholder="Address" />
             <button className="login__button login__signup--button">Sign up</button>
           </form>
         </div>
