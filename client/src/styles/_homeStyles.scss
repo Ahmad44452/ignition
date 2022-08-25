@@ -24,6 +24,7 @@
 
 .home {
   overflow-x: hidden;
+  background-color: #1e1e1e;
 }
 
 .homeHeader {
@@ -51,7 +52,6 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      z-index: -1;
 
       &::after {
         content: "";
@@ -67,6 +67,7 @@
 
   &__content {
     text-align: center;
+    z-index: 5;
     &--heading {
       -webkit-text-stroke: 2px #d3d3d3;
       font-size: 10rem;
@@ -100,6 +101,7 @@
       bottom: 10px;
       transform: translate(-50%, 0);
       animation: homeScroll 3s infinite;
+      z-index: 5;
       svg {
         vertical-align: middle;
         width: 25px;
@@ -186,5 +188,116 @@
 
 .homeContact {
   min-height: 100vh;
-  background-color: #d3d3d3;
+  background-color: rgba(#2c3e50, 1);
+  padding: 1rem 0;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+
+  &__heading {
+    color: transparent;
+    background: #abbaab;
+    background: -webkit-linear-gradient(to right, #ffffff, #abbaab);
+    background: linear-gradient(to right, #ffffff, #abbaab);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 8rem;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-left: 3rem;
+    margin-top: 1rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 150%;
+      height: 1px;
+      background: #abbaab;
+      background: -webkit-linear-gradient(to right, #ffffff, #abbaab);
+      background: linear-gradient(to right, #ffffff, #abbaab);
+    }
+  }
+
+  &__form {
+    padding: 3rem;
+
+    &--group {
+      margin-top: 2rem;
+    }
+    &--input {
+      font-size: 1.7rem;
+      display: block;
+      width: 44.2%;
+      padding: 1.5rem 2rem;
+      background-color: rgba(#1e1e1e, 1);
+      color: #d3d3d3;
+
+      &::placeholder {
+        color: #d3d3d3;
+      }
+
+      &:not(:placeholder-shown) + .homeContact__form--label {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    &--label {
+      color: #d3d3d3;
+      display: inline-block;
+      font-size: 1.55rem;
+      padding: 0.5rem 2rem;
+      transform: translateY(-4.2rem);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s;
+    }
+
+    &--textarea {
+      outline: none;
+      border: none;
+      resize: none;
+      font-family: "Poppins", sans-serif;
+    }
+
+    &--submit {
+      padding: 1.5rem 3rem;
+      font-size: 2rem;
+      margin-top: 2rem;
+      background-color: #1e1e1e;
+      color: #d3d3d3;
+      border: 1px solid #1e1e1e;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.homeJoin {
+  background-color: #1e1e1e;
+  padding: 12rem 0 15rem 0;
+  text-align: center;
+  &__button {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 2rem 4rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    background: #ee0979;
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    box-shadow: rgba(#ff6a00, 0.5) 0px 3px 15px;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: rgba(#ff6a00, 0.5) 0px 6px 20px;
+    }
+
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: rgba(#ff6a00, 0.5) 0px 4px 17px;
+    }
+  }
 }
