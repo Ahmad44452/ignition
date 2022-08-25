@@ -111,6 +111,27 @@
   }
 }
 
+@media (max-width: 768px) {
+  .homeHeader__content--heading {
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .homeHeader {
+    &__content {
+      &--heading {
+        font-size: 7rem;
+      }
+
+      &--button {
+        padding: 1.2rem 4rem;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
 .homeFeatures {
   background-color: #1e1e1e;
   padding: 2rem 0;
@@ -182,6 +203,19 @@
       text-align: justify;
       font-size: 1.3rem;
       padding: 1.2rem 0;
+    }
+  }
+}
+
+@media (max-width: 458px) {
+  .homeFeatures {
+    &__heading {
+      text-align: center;
+      font-size: 6rem;
+    }
+
+    &__cards {
+      padding: 0 1rem 4rem 1rem;
     }
   }
 }
@@ -271,6 +305,69 @@
       border: 1px solid #1e1e1e;
       text-transform: uppercase;
       border-radius: 5px;
+    }
+  }
+}
+
+@media (max-width: 1110px) {
+  .homeContact {
+    clip-path: none;
+
+    &__form {
+      padding: 3rem;
+      width: 60%;
+
+      &--container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &--input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1060px) {
+  .homeContact {
+    &__form {
+      padding: 3rem;
+      width: 80%;
+
+      &--input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .homeContact {
+    &__heading {
+      font-size: 5rem;
+
+      &::after {
+        width: 150%;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .homeContact {
+    &__heading {
+      font-size: 5rem;
+      text-align: center;
+      display: block;
+      padding: 0;
+    }
+
+    &__form {
+      padding: 3rem 2rem;
+      width: 100%;
     }
   }
 }
