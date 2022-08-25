@@ -6,6 +6,7 @@ import { unstable_HistoryRouter as HistoryRouter, Routes, Route } from "react-ro
 import { createBrowserHistory } from "history";
 
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 import MainLayout from "./hoc/MainLayout";
 
@@ -16,6 +17,7 @@ const AppRoutes = () => {
     <MainLayout>
       <HistoryRouter history={historyObject}>
         <Routes>
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </HistoryRouter>

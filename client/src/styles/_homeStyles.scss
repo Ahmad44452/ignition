@@ -1,12 +1,12 @@
 @keyframes homeHeading {
   0% {
-    color: #fff;
+    color: #d3d3d3;
   }
   50% {
     color: transparent;
   }
   100% {
-    color: #fff;
+    color: #d3d3d3;
   }
 }
 
@@ -68,7 +68,7 @@
   &__content {
     text-align: center;
     &--heading {
-      -webkit-text-stroke: 2px #fff;
+      -webkit-text-stroke: 2px #d3d3d3;
       font-size: 10rem;
       font-weight: 600;
       letter-spacing: 15px;
@@ -78,8 +78,8 @@
     }
 
     &--button {
-      color: #fff;
-      border: 1px solid #fff;
+      color: #d3d3d3;
+      border: 1px solid #d3d3d3;
       padding: 1.5rem 4rem;
       font-size: 2.5rem;
       text-transform: uppercase;
@@ -88,13 +88,13 @@
       transition: background-color 0.8s, color 0.8s;
 
       &:hover {
-        background-color: #fff;
-        color: #000;
+        background-color: #d3d3d3;
+        color: #1e1e1e;
       }
     }
 
     &--scroll {
-      color: #fff;
+      color: #d3d3d3;
       position: absolute;
       left: 50;
       bottom: 10px;
@@ -107,4 +107,85 @@
       }
     }
   }
+}
+
+.homeFeatures {
+  background-color: #1e1e1e;
+  padding: 2rem 0;
+
+  &__heading {
+    text-align: center;
+    color: transparent;
+    background: #ee0979;
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 8rem;
+    text-transform: uppercase;
+  }
+
+  &__cards {
+    padding: 0 5rem 4rem 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 30px;
+  }
+
+  &__card {
+    color: #d3d3d3;
+    background-color: #27292b;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    max-width: 35rem;
+    margin-top: 6rem;
+
+    &--icon {
+      text-align: center;
+      padding: 8rem 5rem;
+      svg {
+        fill: #2c3e50;
+        fill: -webkit-linear-gradient(to right, #4ca1af, #2c3e50);
+        fill: linear-gradient(to right, #4ca1af, #2c3e50);
+        fill: url(#featureLighteningGradient);
+        width: 8rem;
+        height: 8rem;
+        vertical-align: middle;
+      }
+    }
+
+    &--heading {
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #d3d3d3;
+        height: 1px;
+        width: 75%;
+      }
+    }
+
+    &--text {
+      text-align: justify;
+      font-size: 1.3rem;
+      padding: 1.2rem 0;
+    }
+  }
+}
+
+.homeContact {
+  min-height: 100vh;
+  background: rgb(30, 30, 30);
+  background: linear-gradient(
+    180deg,
+    rgba(30, 30, 30, 1) 0%,
+    rgba(211, 211, 211, 1) 100%
+  );
 }

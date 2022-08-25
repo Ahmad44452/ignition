@@ -1,5 +1,6 @@
 import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 import homeBG from "./homeBG.mp4";
 
@@ -14,8 +15,9 @@ const HomeHeader = () => {
       </div>
       <div className="homeHeader__content">
         <h1 className="homeHeader__content--heading">Ignition</h1>
-        <button className="homeHeader__content--button">Step in</button>
+        <Link to={"/login"}><button className="homeHeader__content--button">Step in</button></Link>
       </div>
+
       <div className="homeHeader__content--scroll">
         <IoIosArrowDown />
       </div>
