@@ -259,6 +259,7 @@
     &--group {
       margin-top: 2rem;
     }
+
     &--input {
       font-size: 1.7rem;
       display: block;
@@ -267,6 +268,11 @@
       background-color: rgba(#1e1e1e, 1);
       color: #d3d3d3;
       border-radius: 5px;
+
+      &--error,
+      &--error:focus {
+        border-bottom: 2px solid #c21010 !important;
+      }
 
       &::placeholder {
         color: #d3d3d3;
