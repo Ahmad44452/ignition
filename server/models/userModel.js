@@ -6,8 +6,8 @@ const validator = require("validator");
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, "Email is required!"],
+    unique: [true, "Email already exists!"],
     trim: true,
     lowercase: true,
     validate(value) {
@@ -18,30 +18,20 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: [true, "Password is required!"],
     trim: true
-  },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user'
   },
   firstname: {
     type: String,
-    maxLength: 100,
+    maxLength: [100, "Max length: 100"],
     trim: true
   },
   lastname: {
     type: String,
-    maxLength: 100,
+    maxLength: [100, "Max length: 100"],
     trim: true
-  },
-  age: {
-    type: Number
-  },
-  date: {
-    type: Date,
-    default: Date.now()
   }
 })
 
+const User = mongoose.model("User", userSchema);
+module.exports = { User };
