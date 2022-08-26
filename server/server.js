@@ -4,8 +4,9 @@ const app = express();
 const mongoose = require("mongoose");
 
 
-const mongoUri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
 
+///////////// MONGO DB CONNECTION
+const mongoUri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -13,6 +14,20 @@ mongoose.connect(mongoUri, {
   if (err) throw err;
   console.log("DB Connected!");
 })
+///////////////////////////////////////
+
+
+
+//////////// APPLY MIDDLEWARES
+app.use(express.json());
+///////////////////////////////////////
+
+
+
+////////// API ROUTES
+const userApi = require("./routes/api/userApi");
+app.use("/api/user", userApi);
+///////////////////////////////////////
 
 app.get("/", (req, res) => {
   res.send(`
