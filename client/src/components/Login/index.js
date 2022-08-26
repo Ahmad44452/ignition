@@ -18,9 +18,9 @@ const Login = () => {
               className={isUserWantLogin ? "login__heading login__heading--signup login__heading--signup--show" : "login__heading login__heading--signup"}
               htmlFor="login__switch" aria-hidden="true"
             >Sign up</span>
-            <input className="login__input" type="text" name="username" placeholder="User name" />
-            <input className="login__input" type="email" name="email" placeholder="Email" />
-            <input className="login__input" type="password" name="password" placeholder="Password" />
+            <input className="login__input" type="text" name="username" placeholder="User name" autoComplete="off" />
+            <input className="login__input" type="email" name="email" placeholder="Email" autoComplete="off" />
+            <input className="login__input" type="password" name="password" placeholder="Password" autoComplete="off" />
             <button className="login__button login__signup--button">Sign up</button>
           </form>
         </div>
