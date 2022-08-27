@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { registerUserApi, signInUserApi } from "../../store/api/userApi";
+import showToast from "../../utils/showToast";
+
 
 const Login = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const userReducer = useSelector(state => state.userReducer);
 
   const [isUserWantLogin, setUserWantLogin] = useState(false);
 
@@ -36,7 +47,11 @@ const Login = () => {
       confirmPassword: Yup.string().required('Password is required!')
     }),
     onSubmit: (values) => {
-      console.log(values);
+      if (values.password !== values.confirmPassword) {
+        showToast('error', 'Password and confirm password are not same!');
+      } else {
+        dispatch(registerUserApi(values.email, values.password));
+      }
     }
   })
 
@@ -50,10 +65,15 @@ const Login = () => {
       password: Yup.string().required('Password is required!')
     }),
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(signInUserApi(values.email, values.password));
     }
   })
 
+  useEffect(() => {
+    if (userReducer.auth === true) {
+      navigate('/dashboard');
+    }
+  }, [userReducer])
 
   return (
     <div className="login__container">

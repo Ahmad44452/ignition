@@ -13,13 +13,15 @@ mongoose.connect(mongoUri, {
 }, (err) => {
   if (err) throw err;
   console.log("DB Connected!");
-})
+});
 ///////////////////////////////////////
 
 
 
 //////////// APPLY MIDDLEWARES
 app.use(express.json());
+const { checkToken } = require('./middlewares/auth');
+app.use(checkToken);
 ///////////////////////////////////////
 
 
