@@ -1,0 +1,45 @@
+.dashboard {
+  min-height: 100vh;
+  background-color: #1e1e1e;
+  color: #d3d3d3;
+  padding: 1rem 2rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--signout {
+      color: #d3d3d3;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 2.5rem;
+        height: 2.5rem;
+        vertical-align: middle;
+      }
+
+      span {
+        display: inline-block;
+        font-size: 1.5rem;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition-delay: 0.1s;
+        margin-right: 0.3rem;
+        color: #c21010;
+        transition: transform 0.5s;
+      }
+
+      &:hover {
+        color: #c21010;
+        span {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}

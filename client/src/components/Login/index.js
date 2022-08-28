@@ -71,7 +71,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userReducer.auth === true) {
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     }
   }, [userReducer])
 
