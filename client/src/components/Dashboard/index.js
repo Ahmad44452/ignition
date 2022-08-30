@@ -5,6 +5,8 @@ import { AiOutlinePoweroff } from "react-icons/ai";
 
 import { signOutUserApi } from "../../store/api/userApi";
 
+import GetSim from "./getSim";
+
 const Dashboard = () => {
 
   const dispatch = useDispatch();
@@ -29,6 +31,12 @@ const Dashboard = () => {
       <div className="dashboard__header">
         <h1>Welcome {userReducer.data.firstName || userReducer.data.email}!</h1>
         <div onClick={signOutUser} className="dashboard__header--signout"><span>Sign out</span><AiOutlinePoweroff /></div>
+      </div>
+
+      <div className="dashboard__content">
+        {
+          userReducer && userReducer.data.simStatus === 'notAlloted' ? <GetSim /> : null
+        }
       </div>
     </div>
   )

@@ -20,10 +20,12 @@ const HomeContact = () => {
     }
   });
 
+
   return (
     <div className="homeContact">
       <h2 className="homeContact__heading">Contact Us</h2>
       <div className="homeContact__form--container">
+
         <form className="homeContact__form" onSubmit={formik.handleSubmit}>
           <div className="homeContact__form--group">
             <input autoComplete="off" type="text"
@@ -46,6 +48,7 @@ const HomeContact = () => {
             <button className="homeContact__form--submit" type="submit">Send</button>
           </div>
         </form>
+
       </div>
 
 

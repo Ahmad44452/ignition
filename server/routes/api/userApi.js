@@ -59,6 +59,30 @@ router.route("/auth").get(checkLoggedIn, async (req, res) => {
   res.status(200).json(getUserProps(req.user));
 })
 
+router.route('/generateNumbers').get(async (req, res) => {
+  try {
+    const arr = [];
+    for (let i = 1; i <= 10; i++) {
+      let user;
+      let number;
+      do {
+        number = '03' + (Math.floor(Math.random() * 999999999)).toString();
+        user = await User.findOne({ simNumber: number });
+      } while (user);
+
+      arr.push(number);
+    }
+
+    res.status(200).json(arr);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: "Error",
+      error: error
+    })
+  }
+})
+
 
 const getUserProps = (userObj) => ({
   email: userObj.email,
