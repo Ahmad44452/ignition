@@ -19,7 +19,7 @@ const ActivateSim = () => {
       </div>
 
       <div className="activatesim__qr--container">
-        <a href={`${window.location.hostname}/api/user/activatesim/${userReducer.data._id}`}
+        <a href={`/api/user/activatesim/${userReducer.data._id}`}
           className="activatesim__qr--button" target={"_blank"} rel="noreferrer" alt="QR Code">Activate</a>
         <div className="activatesim__qr">
           <img src={`http://api.qrserver.com/v1/create-qr-code/?data=${window.location.hostname}/api/user/activatesim/${userReducer.data._id}&size=150x150`} />
