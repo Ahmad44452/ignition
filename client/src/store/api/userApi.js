@@ -67,3 +67,18 @@ export const signOutUserApi = () => {
     }
   }
 }
+
+export const registerUserNumberApi = (userInfoObj, simNumber) => {
+  return async (dispatch) => {
+    try {
+      const user = await axios.patch('/api/user/registerNumber', { ...userInfoObj, simNumber }, getAuthHeader);
+      dispatch(setDataUser(user.data));
+    } catch (error) {
+      let errorMessage = error.response.data.message;
+      if (errorMessage === "Error") {
+        errorMessage = error.response.data.error.message;
+      }
+      showToast('error', errorMessage);
+    }
+  }
+}

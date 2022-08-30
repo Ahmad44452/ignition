@@ -4,12 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getNumbersApi } from "../../../store/api/numbersApi";
 
-const ChooseNumber = () => {
+const ChooseNumber = ({ incState, simNoIndex, setSimNoIndex }) => {
   const dispatch = useDispatch();
   const numbersReducer = useSelector(state => state.numbersReducer);
 
   const [isLoading, setLoading] = useState(true);
   const [numbers, setNumbers] = useState([]);
+
+  const numberSelected = (index) => {
+    setSimNoIndex(index);
+  }
 
   useEffect(() => {
 
@@ -35,14 +39,26 @@ const ChooseNumber = () => {
           (
             <div className="chooseno">
               <div className="chooseno__content">
-                <h2 className="chooseno__heading">Choose one of the following number</h2>
+                <h2 className="chooseno__heading">2. Select a number</h2>
                 <div className="chooseno__numbers">
                   {
                     numbersReducer.numbers.map((item, index) => (
-                      <div className="chooseno__number" key={index}>{item}</div>
+                      <div className={simNoIndex === index ? "chooseno__number chooseno__number--selected" : "chooseno__number"} key={index} onClick={() => numberSelected(index)}>{item}</div>
                     ))
                   }
                 </div>
+                {
+                  simNoIndex === -1 ? null :
+                    (
+                      <div className="chooseno__submit--group">
+                        <button className="chooseno__submit--button" onClick={e => {
+                          e.preventDefault();
+                          incState();
+                        }}>Next</button>
+                      </div>
+                    )
+                }
+
               </div>
             </div>
 

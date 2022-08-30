@@ -75,7 +75,6 @@ router.route('/generateNumbers').get(async (req, res) => {
 
     res.status(200).json(arr);
   } catch (error) {
-    console.log(error);
     res.status(400).json({
       message: "Error",
       error: error
@@ -83,8 +82,44 @@ router.route('/generateNumbers').get(async (req, res) => {
   }
 })
 
+router.route('/registerNumber').patch(checkLoggedIn, async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.user.email });
+    if (user.simStatus === 'notAlloted') {
+      user.simStatus = "unactivated";
+      user.simNumber = req.body.simNumber;
+      user.firstname = req.body.firstname;
+      user.lastname = req.body.lastname;
+      user.cnic = req.body.cnic;
+      user.address = req.body.address;
+    }
+
+    const doc = await user.save();
+    res.status(200).json(getUserProps(doc));
+  } catch (error) {
+    res.status(400).json({
+      message: "Error",
+      error: error
+    })
+  }
+})
+
+router.route('/activatesim/:id').get(async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    if (!user) return res.status(400).send(`<html style="background-color: #000"><body><h1 style="color: #fff">Invalid URL</h1></body></html>`);
+
+    user.simStatus = 'activated';
+    user.save();
+    return res.status(200).send(`<html style="background-color: #000"><body><h1 style="color: #fff">Sim Activated. Refresh your dashboard!</h1></body></html>`);
+  } catch (error) {
+    return res.status(400).send(`<html style="background-color: #000"><body><h1 style="color: #fff">Invalid URL</h1></body></html>`);
+  }
+})
 
 const getUserProps = (userObj) => ({
+  _id: userObj._id,
   email: userObj.email,
   firstname: userObj.firstname,
   lastname: userObj.lastname,

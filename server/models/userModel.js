@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
   },
   simStatus: {
     type: String,
-    enum: ['notAlloted', 'unactivated', 'activted'],
+    enum: ['notAlloted', 'unactivated', 'activated'],
     default: 'notAlloted'
   },
   address: {
