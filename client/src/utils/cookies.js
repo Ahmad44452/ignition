@@ -6,6 +6,6 @@ export const removeTokenCookie = () => cookies.remove('x-access-token');
 
 export const getAuthHeader = {
   headers: {
-    'x-access-token': getTokenCookie()
+    'x-access-token': cookies.load('x-access-token')
   }
 }

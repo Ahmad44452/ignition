@@ -23,7 +23,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    if (userReducer.auth !== true) {
+    if (userReducer.auth === false) {
       navigate('/login');
     }
   }, [userReducer]);

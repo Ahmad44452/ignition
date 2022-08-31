@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { setDataUser, signOutUser } from "../slices/userSlice";
+import { resetNumbers } from "../slices/numbersSlice";
 import showToast from "../../utils/showToast";
 import { getAuthHeader, removeTokenCookie } from "../../utils/cookies";
 
@@ -57,6 +58,7 @@ export const authUserApi = () => {
 export const signOutUserApi = () => {
   return async (dispatch) => {
     try {
+      dispatch(resetNumbers());
       dispatch(signOutUser());
       removeTokenCookie();
     } catch (error) {

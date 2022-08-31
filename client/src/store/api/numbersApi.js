@@ -11,7 +11,7 @@ export const getNumbersApi = () => {
 
       const res = await axios.get('/api/user/generateNumbers');
       dispatch(setNumbers(res.data));
-
+      return 'passed'
     } catch (error) {
       let errorMessage = error.response.data.message;
       if (errorMessage === "Error") {

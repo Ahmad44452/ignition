@@ -10,9 +10,12 @@ export const numbersSlice = createSlice({
   reducers: {
     setNumbers: (state, action) => {
       state.numbers = action.payload;
+    },
+    resetNumbers: (state, acion) => {
+      state.numbers = [];
     }
   }
 });
 
-export const { setNumbers } = numbersSlice.actions;
+export const { setNumbers, resetNumbers } = numbersSlice.actions;
 export default numbersSlice.reducer;

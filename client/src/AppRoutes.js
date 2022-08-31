@@ -3,8 +3,7 @@ import "./styles/mainStyles.scss";
 /////////////////////////////////////////
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Oval } from "react-loader-spinner";
+import { useDispatch, useSelector } from "react-redux";
 
 
 import { authUserApi } from "./store/api/userApi";
@@ -20,11 +19,15 @@ const AppRoutes = () => {
 
   const [isLoading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const userReducer = useSelector(state => state.userReducer);
 
   useEffect(() => {
-    dispatch(authUserApi()).then(res => {
-      setLoading(false);
-    })
+
+    if (userReducer.auth === null) {
+      dispatch(authUserApi()).then(res => {
+        setLoading(false);
+      })
+    }
 
   }, [dispatch])
 

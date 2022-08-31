@@ -17,24 +17,26 @@ const ChooseNumber = ({ incState, simNoIndex, setSimNoIndex }) => {
 
   useEffect(() => {
 
-    if (numbersReducer && numbersReducer.numbers.length === 0) {
-      dispatch(getNumbersApi()).then(() => setLoading(false))
+    if (numbersReducer.numbers.length === 0) {
+      dispatch(getNumbersApi());
     }
 
-  }, [dispatch])
+  }, [dispatch, numbersReducer])
 
   return (
     <>
       {
-        isLoading === true ? (<Oval
-          ariaLabel="loading-indicator"
-          height={100}
-          width={100}
-          strokeWidth={4}
-          strokeWidthSecondary={1}
-          color="blue"
-          secondaryColor="#fff"
-        />)
+        numbersReducer && numbersReducer.numbers.length === 0 ? (
+          <Oval
+            ariaLabel="loading-indicator"
+            height={100}
+            width={100}
+            strokeWidth={4}
+            strokeWidthSecondary={1}
+            color="blue"
+            secondaryColor="#fff"
+          />
+        )
           :
           (
             <div className="chooseno">
@@ -61,7 +63,6 @@ const ChooseNumber = ({ incState, simNoIndex, setSimNoIndex }) => {
 
               </div>
             </div>
-
           )
       }
     </>

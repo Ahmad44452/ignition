@@ -22,9 +22,9 @@ router.route("/register").post(async (req, res) => {
     // Generate Token
     const token = user.generateToken();
     const doc = await user.save();
-
+    console.log(doc);
     // Send response
-    res.cookie('x-access-token', token).status(200).json(getUserProps(doc));
+    return res.cookie('x-access-token', token).status(200).json(getUserProps(doc));
   } catch (error) {
     res.status(400).json({
       message: "Error",
@@ -45,10 +45,10 @@ router.route("/login").post(async (req, res) => {
     if (!comparePassword) return res.status(400).json({ message: "Wrong password!" });
 
     const token = user.generateToken();
-
-    res.cookie('x-access-token', token).status(200).json(getUserProps(user));
+    console.log(user);
+    return res.cookie('x-access-token', token).status(200).json(getUserProps(user));
   } catch (error) {
-    res.status(400).json({
+    return res.status(400).json({
       message: "Error",
       error: error
     })
@@ -65,9 +65,7 @@ router.route('/generateNumbers').get(async (req, res) => {
     for (let i = 1; i <= 10; i++) {
       let user;
       let number;
-      //03164128886
-      //03999999999
-      //03111111111
+
       do {
         number = '03' + (Math.floor(Math.random() * (999999999 - 111111111) + 111111111)).toString();
         user = await User.findOne({ simNumber: number });
@@ -76,7 +74,7 @@ router.route('/generateNumbers').get(async (req, res) => {
       arr.push(number);
     }
 
-    res.status(200).json(arr);
+    return res.status(200).json(arr);
   } catch (error) {
     res.status(400).json({
       message: "Error",
@@ -98,9 +96,9 @@ router.route('/registerNumber').patch(checkLoggedIn, async (req, res) => {
     }
 
     const doc = await user.save();
-    res.status(200).json(getUserProps(doc));
+    return res.status(200).json(getUserProps(doc));
   } catch (error) {
-    res.status(400).json({
+    return res.status(400).json({
       message: "Error",
       error: error
     })
