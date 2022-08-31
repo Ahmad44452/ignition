@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import cookies from 'react-cookies';
 import { setDataUser, signOutUser } from "../slices/userSlice";
 import { resetNumbers } from "../slices/numbersSlice";
 import showToast from "../../utils/showToast";
@@ -73,7 +73,11 @@ export const signOutUserApi = () => {
 export const registerUserNumberApi = (userInfoObj, simNumber) => {
   return async (dispatch) => {
     try {
-      const user = await axios.patch('/api/user/registerNumber', { ...userInfoObj, simNumber }, getAuthHeader);
+      const user = await axios.patch('/api/user/registerNumber', { ...userInfoObj, simNumber }, {
+        headers: {
+          'x-access-token': cookies.load('x-access-token')
+        }
+      });
       dispatch(setDataUser(user.data));
     } catch (error) {
       let errorMessage = error.response.data.message;
