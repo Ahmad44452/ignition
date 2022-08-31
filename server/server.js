@@ -41,16 +41,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// app.get("/", (req, res) => {
-//   res.send(`
-//   <html>
-//     <body>
-//       <h1>Server is running</h1>
-//     </body>
-//   </html>
-//   `)
-// })
-
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
