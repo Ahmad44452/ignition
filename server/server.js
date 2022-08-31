@@ -23,7 +23,6 @@ mongoose.connect(mongoUri, {
 app.use(express.json());
 const { checkToken } = require('./middlewares/auth');
 app.use(checkToken);
-///////////////////////////////////////
 
 
 
