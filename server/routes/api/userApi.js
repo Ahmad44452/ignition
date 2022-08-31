@@ -65,10 +65,13 @@ router.route('/generateNumbers').get(async (req, res) => {
     for (let i = 1; i <= 10; i++) {
       let user;
       let number;
+      //03164128886
+      //03999999999
+      //03111111111
       do {
-        number = '03' + (Math.floor(Math.random() * 999999999)).toString();
+        number = '03' + (Math.floor(Math.random() * (999999999 - 111111111) + 111111111)).toString();
         user = await User.findOne({ simNumber: number });
-      } while (user || (number.length !== 11));
+      } while (user);
 
       arr.push(number);
     }
