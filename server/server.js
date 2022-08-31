@@ -32,15 +32,24 @@ const userApi = require("./routes/api/userApi");
 app.use("/api/user", userApi);
 ///////////////////////////////////////
 
-app.get("/", (req, res) => {
-  res.send(`
-  <html>
-    <body>
-      <h1>Server is running</h1>
-    </body>
-  </html>
-  `)
-})
+app.use(express.static('client/build'));
+
+if (process.env.NODE_ENV === 'production') {
+  const path = require("path");
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+  });
+}
+
+// app.get("/", (req, res) => {
+//   res.send(`
+//   <html>
+//     <body>
+//       <h1>Server is running</h1>
+//     </body>
+//   </html>
+//   `)
+// })
 
 
 const port = process.env.PORT || 3001;
